@@ -19,8 +19,7 @@ class PagesController extends Controller
     	$header = 'To jest nagłówek strony O nas';
     	$date = '26/01/2020';
     	$vistied = 356;
-       	return view('pages.about')
-        ;
+       	return view('pages.about');
 
     }
 }
