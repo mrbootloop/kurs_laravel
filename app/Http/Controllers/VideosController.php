@@ -24,4 +24,12 @@ class VideosController extends Controller
     	$video = video::findOrFail($id);
     	return view ('videos.show')->with ('video', $video);
     }
+
+    /**
+    *Formularz dodawania filmu
+    */
+    public function create()
+    {
+    	return view('videos.create');
+    }
 }
