@@ -1,0 +1,419 @@
+[33mcommit ab79d2eb02dc15dedc7569b18534225c8b86b01e[m[33m ([m[1;36mHEAD -> [m[1;32mbaza_danych[m[33m, [m[1;31morigin/baza_danych[m[33m)[m
+Author: Krzysztof Markiewicz <markiewicz.krzysztof94@gmail.com>
+Date:   Fri Feb 7 22:39:31 2020 +0100
+
+    Dodanie formularza
+
+[1mdiff --git a/app/Http/Controllers/VideosController.php b/app/Http/Controllers/VideosController.php[m
+[1mindex ff5b4a2..3f38650 100644[m
+[1m--- a/app/Http/Controllers/VideosController.php[m
+[1m+++ b/app/Http/Controllers/VideosController.php[m
+[36m@@ -24,4 +24,12 @@[m [mclass VideosController extends Controller[m
+     	$video = video::findOrFail($id);[m
+     	return view ('videos.show')->with ('video', $video);[m
+     }[m
+[32m+[m
+[32m+[m[32m    /**[m
+[32m+[m[32m    *Formularz dodawania filmu[m
+[32m+[m[32m    */[m
+[32m+[m[32m    public function create()[m
+[32m+[m[32m    {[m
+[32m+[m[41m    [m	[32mreturn view('videos.create');[m
+[32m+[m[32m    }[m
+ }[m
+[1mdiff --git a/composer.json b/composer.json[m
+[1mindex 0ed2dc5..de82318 100644[m
+[1m--- a/composer.json[m
+[1m+++ b/composer.json[m
+[36m@@ -11,7 +11,8 @@[m
+         "php": "^7.2",[m
+         "fideloper/proxy": "^4.0",[m
+         "laravel/framework": "^6.2",[m
+[31m-        "laravel/tinker": "^2.0"[m
+[32m+[m[32m        "laravel/tinker": "^2.0",[m
+[32m+[m[32m        "laravelcollective/html": "^6.0"[m
+     },[m
+     "require-dev": {[m
+         "facade/ignition": "^1.4",[m
+[1mdiff --git a/composer.lock b/composer.lock[m
+[1mindex 643dddd..aa9f76f 100644[m
+[1m--- a/composer.lock[m
+[1m+++ b/composer.lock[m
+[36m@@ -4,7 +4,7 @@[m
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",[m
+         "This file is @generated automatically"[m
+     ],[m
+[31m-    "content-hash": "3bb4dacacf43532a01bf1d3d6dd3bbe1",[m
+[32m+[m[32m    "content-hash": "37b1a9eaf810aea2d3e5eec06f831d29",[m
+     "packages": [[m
+         {[m
+             "name": "dnoegel/php-xdg-base-dir",[m
+[36m@@ -424,16 +424,16 @@[m
+         },[m
+         {[m
+             "name": "laravel/framework",[m
+[31m-            "version": "v6.12.0",[m
+[32m+[m[32m            "version": "v6.14.0",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/laravel/framework.git",[m
+[31m-                "reference": "8e189a8dee7ff76bf50acb7e80aa1a36afaf54d4"[m
+[32m+[m[32m                "reference": "9e78f1aeb2c60bd7badcbafc352a9a2c5863c60c"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/laravel/framework/zipball/8e189a8dee7ff76bf50acb7e80aa1a36afaf54d4",[m
+[31m-                "reference": "8e189a8dee7ff76bf50acb7e80aa1a36afaf54d4",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/laravel/framework/zipball/9e78f1aeb2c60bd7badcbafc352a9a2c5863c60c",[m
+[32m+[m[32m                "reference": "9e78f1aeb2c60bd7badcbafc352a9a2c5863c60c",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -521,9 +521,9 @@[m
+                 "ext-posix": "Required to use all features of the queue worker.",[m
+                 "ext-redis": "Required to use the Redis cache and queue drivers.",[m
+                 "filp/whoops": "Required for friendly error pages in development (^2.4).",[m
+[31m-                "fzaninotto/faker": "Required to use the eloquent factory builder (^1.4).",[m
+[32m+[m[32m                "fzaninotto/faker": "Required to use the eloquent factory builder (^1.9.1).",[m
+                 "guzzlehttp/guzzle": "Required to use the Mailgun mail driver and the ping methods on schedules (^6.0).",[m
+[31m-                "laravel/tinker": "Required to use the tinker console command (^1.0).",[m
+[32m+[m[32m                "laravel/tinker": "Required to use the tinker console command (^2.0).",[m
+                 "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (^1.0).",[m
+                 "league/flysystem-cached-adapter": "Required to use the Flysystem cache (^1.0).",[m
+                 "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",[m
+[36m@@ -567,20 +567,20 @@[m
+                 "framework",[m
+                 "laravel"[m
+             ],[m
+[31m-            "time": "2020-01-21T15:10:03+00:00"[m
+[32m+[m[32m            "time": "2020-02-04T14:38:06+00:00"[m
+         },[m
+         {[m
+             "name": "laravel/tinker",[m
+[31m-            "version": "v2.1.0",[m
+[32m+[m[32m            "version": "v2.2.0",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/laravel/tinker.git",[m
+[31m-                "reference": "d8ce361f2fd979c03e5f66c79d4a95a1c1e68640"[m
+[32m+[m[32m                "reference": "37579c93271ec30ef099dd633ec7c2de5e5fb112"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/laravel/tinker/zipball/d8ce361f2fd979c03e5f66c79d4a95a1c1e68640",[m
+[31m-                "reference": "d8ce361f2fd979c03e5f66c79d4a95a1c1e68640",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/laravel/tinker/zipball/37579c93271ec30ef099dd633ec7c2de5e5fb112",[m
+[32m+[m[32m                "reference": "37579c93271ec30ef099dd633ec7c2de5e5fb112",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -592,7 +592,8 @@[m
+                 "symfony/var-dumper": "^4.0|^5.0"[m
+             },[m
+             "require-dev": {[m
+[31m-                "phpunit/phpunit": "^8.0"[m
+[32m+[m[32m                "mockery/mockery": "^1.3.1",[m
+[32m+[m[32m                "phpunit/phpunit": "^8.0|^9.0"[m
+             },[m
+             "suggest": {[m
+                 "illuminate/database": "The Illuminate Database package (^6.0|^7.0)."[m
+[36m@@ -630,7 +631,75 @@[m
+                 "laravel",[m
+                 "psysh"[m
+             ],[m
+[31m-            "time": "2020-01-14T16:58:39+00:00"[m
+[32m+[m[32m            "time": "2020-02-05T15:00:44+00:00"[m
+[32m+[m[32m        },[m
+[32m+[m[32m        {[m
+[32m+[m[32m            "name": "laravelcollective/html",[m
+[32m+[m[32m            "version": "v6.0.3",[m
+[32m+[m[32m            "source": {[m
+[32m+[m[32m                "type": "git",[m
+[32m+[m[32m                "url": "https://github.com/LaravelCollective/html.git",[m
+[32m+[m[32m                "reference": "bcc317d21a7e04eebcc81c4109fa84feaab63590"[m
+[32m+[m[32m            },[m
+[32m+[m[32m            "dist": {[m
+[32m+[m[32m                "type": "zip",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/bcc317d21a7e04eebcc81c4109fa84feaab63590",[m
+[32m+[m[32m                "reference": "bcc317d21a7e04eebcc81c4109fa84feaab63590",[m
+[32m+[m[32m                "shasum": ""[m
+[32m+[m[32m            },[m
+[32m+[m[32m            "require": {[m
+[32m+[m[32m                "illuminate/http": "^6.0",[m
+[32m+[m[32m                "illuminate/routing": "^6.0",[m
+[32m+[m[32m                "illuminate/session": "^6.0",[m
+[32m+[m[32m                "illuminate/support": "^6.0",[m
+[32m+[m[32m                "illuminate/view": "^6.0",[m
+[32m+[m[32m                "php": ">=7.2"[m
+[32m+[m[32m            },[m
+[32m+[m[32m            "require-dev": {[m
+[32m+[m[32m                "illuminate/database": "^6.0",[m
+[32m+[m[32m                "mockery/mockery": "~1.0",[m
+[32m+[m[32m                "phpunit/phpunit": "~7.1"[m
+[32m+[m[32m            },[m
+[32m+[m[32m            "type": "library",[m
+[32m+[m[32m            "extra": {[m
+[32m+[m[32m                "branch-alias": {[m
+[32m+[m[32m                    "dev-master": "6.0-dev"[m
+[32m+[m[32m                },[m
+[32m+[m[32m                "laravel": {[m
+[32m+[m[32m                    "providers": [[m
+[32m+[m[32m                        "Collective\\Html\\HtmlServiceProvider"[m
+[32m+[m[32m                    ],[m
+[32m+[m[32m                    "aliases": {[m
+[32m+[m[32m                        "Form": "Collective\\Html\\FormFacade",[m
+[32m+[m[32m                        "Html": "Collective\\Html\\HtmlFacade"[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                }[m
+[32m+[m[32m            },[m
+[32m+[m[32m            "autoload": {[m
+[32m+[m[32m                "psr-4": {[m
+[32m+[m[32m                    "Collective\\Html\\": "src/"[m
+[32m+[m[32m                },[m
+[32m+[m[32m                "files": [[m
+[32m+[m[32m                    "src/helpers.php"[m
+[32m+[m[32m                ][m
+[32m+[m[32m            },[m
+[32m+[m[32m            "notification-url": "https://packagist.org/downloads/",[m
+[32m+[m[32m            "license": [[m
+[32m+[m[32m                "MIT"[m
+[32m+[m[32m            ],[m
+[32m+[m[32m            "authors": [[m
+[32m+[m[32m                {[m
+[32m+[m[32m                    "name": "Adam Engebretson",[m
+[32m+[m[32m                    "email": "adam@laravelcollective.com"[m
+[32m+[m[32m                },[m
+[32m+[m[32m                {[m
+[32m+[m[32m                    "name": "Taylor Otwell",[m
+[32m+[m[32m                    "email": "taylorotwell@gmail.com"[m
+[32m+[m[32m                }[m
+[32m+[m[32m            ],[m
+[32m+[m[32m            "description": "HTML and Form Builders for the Laravel Framework",[m
+[32m+[m[32m            "homepage": "https://laravelcollective.com",[m
+[32m+[m[32m            "time": "2019-10-02T00:37:39+00:00"[m
+         },[m
+         {[m
+             "name": "league/commonmark",[m
+[36m@@ -770,16 +839,16 @@[m
+         },[m
+         {[m
+             "name": "league/flysystem",[m
+[31m-            "version": "1.0.63",[m
+[32m+[m[32m            "version": "1.0.64",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/thephpleague/flysystem.git",[m
+[31m-                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6"[m
+[32m+[m[32m                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",[m
+[31m-                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",[m
+[32m+[m[32m                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -791,7 +860,7 @@[m
+             },[m
+             "require-dev": {[m
+                 "phpspec/phpspec": "^3.4",[m
+[31m-                "phpunit/phpunit": "^5.7.10"[m
+[32m+[m[32m                "phpunit/phpunit": "^5.7.26"[m
+             },[m
+             "suggest": {[m
+                 "ext-fileinfo": "Required for MimeType",[m
+[36m@@ -850,7 +919,7 @@[m
+                 "sftp",[m
+                 "storage"[m
+             ],[m
+[31m-            "time": "2020-01-04T16:30:31+00:00"[m
+[32m+[m[32m            "time": "2020-02-05T18:14:17+00:00"[m
+         },[m
+         {[m
+             "name": "monolog/monolog",[m
+[36m@@ -1585,16 +1654,16 @@[m
+         },[m
+         {[m
+             "name": "symfony/console",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/console.git",[m
+[31m-                "reference": "e9ee09d087e2c88eaf6e5fc0f5c574f64d100e4f"[m
+[32m+[m[32m                "reference": "f512001679f37e6a042b51897ed24a2f05eba656"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/symfony/console/zipball/e9ee09d087e2c88eaf6e5fc0f5c574f64d100e4f",[m
+[31m-                "reference": "e9ee09d087e2c88eaf6e5fc0f5c574f64d100e4f",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/symfony/console/zipball/f512001679f37e6a042b51897ed24a2f05eba656",[m
+[32m+[m[32m                "reference": "f512001679f37e6a042b51897ed24a2f05eba656",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -1657,11 +1726,11 @@[m
+             ],[m
+             "description": "Symfony Console Component",[m
+             "homepage": "https://symfony.com",[m
+[31m-            "time": "2020-01-10T21:54:01+00:00"[m
+[32m+[m[32m            "time": "2020-01-25T12:44:29+00:00"[m
+         },[m
+         {[m
+             "name": "symfony/css-selector",[m
+[31m-            "version": "v5.0.3",[m
+[32m+[m[32m            "version": "v5.0.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/css-selector.git",[m
+[36m@@ -1714,16 +1783,16 @@[m
+         },[m
+         {[m
+             "name": "symfony/debug",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/debug.git",[m
+[31m-                "reference": "89c3fd5c299b940333bc6fe9f1b8db1b0912c759"[m
+[32m+[m[32m                "reference": "20236471058bbaa9907382500fc14005c84601f0"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/symfony/debug/zipball/89c3fd5c299b940333bc6fe9f1b8db1b0912c759",[m
+[31m-                "reference": "89c3fd5c299b940333bc6fe9f1b8db1b0912c759",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/symfony/debug/zipball/20236471058bbaa9907382500fc14005c84601f0",[m
+[32m+[m[32m                "reference": "20236471058bbaa9907382500fc14005c84601f0",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -1766,20 +1835,20 @@[m
+             ],[m
+             "description": "Symfony Debug Component",[m
+             "homepage": "https://symfony.com",[m
+[31m-            "time": "2020-01-08T17:29:02+00:00"[m
+[32m+[m[32m            "time": "2020-01-25T12:44:29+00:00"[m
+         },[m
+         {[m
+             "name": "symfony/error-handler",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/error-handler.git",[m
+[31m-                "reference": "a59789092e40ad08465dc2cdc55651be503d0d5a"[m
+[32m+[m[32m                "reference": "d2721499ffcaf246a743e01cdf6696d3d5dd74c1"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/symfony/error-handler/zipball/a59789092e40ad08465dc2cdc55651be503d0d5a",[m
+[31m-                "reference": "a59789092e40ad08465dc2cdc55651be503d0d5a",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/symfony/error-handler/zipball/d2721499ffcaf246a743e01cdf6696d3d5dd74c1",[m
+[32m+[m[32m                "reference": "d2721499ffcaf246a743e01cdf6696d3d5dd74c1",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -1822,11 +1891,11 @@[m
+             ],[m
+             "description": "Symfony ErrorHandler Component",[m
+             "homepage": "https://symfony.com",[m
+[31m-            "time": "2020-01-08T17:29:02+00:00"[m
+[32m+[m[32m            "time": "2020-01-27T09:48:47+00:00"[m
+         },[m
+         {[m
+             "name": "symfony/event-dispatcher",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/event-dispatcher.git",[m
+[36m@@ -1954,7 +2023,7 @@[m
+         },[m
+         {[m
+             "name": "symfony/finder",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/finder.git",[m
+[36m@@ -2003,16 +2072,16 @@[m
+         },[m
+         {[m
+             "name": "symfony/http-foundation",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/http-foundation.git",[m
+[31m-                "reference": "c33998709f3fe9b8e27e0277535b07fbf6fde37a"[m
+[32m+[m[32m                "reference": "491a20dfa87e0b3990170593bc2de0bb34d828a5"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/c33998709f3fe9b8e27e0277535b07fbf6fde37a",[m
+[31m-                "reference": "c33998709f3fe9b8e27e0277535b07fbf6fde37a",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/491a20dfa87e0b3990170593bc2de0bb34d828a5",[m
+[32m+[m[32m                "reference": "491a20dfa87e0b3990170593bc2de0bb34d828a5",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -2054,20 +2123,20 @@[m
+             ],[m
+             "description": "Symfony HttpFoundation Component",[m
+             "homepage": "https://symfony.com",[m
+[31m-            "time": "2020-01-04T13:00:46+00:00"[m
+[32m+[m[32m            "time": "2020-01-31T09:11:17+00:00"[m
+         },[m
+         {[m
+             "name": "symfony/http-kernel",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/http-kernel.git",[m
+[31m-                "reference": "16f2aa3c54b08483fba5375938f60b1ff83b6bd2"[m
+[32m+[m[32m                "reference": "62116a9c8fb15faabb158ad9cb785c353c2572e5"[m
+             },[m
+             "dist": {[m
+                 "type": "zip",[m
+[31m-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/16f2aa3c54b08483fba5375938f60b1ff83b6bd2",[m
+[31m-                "reference": "16f2aa3c54b08483fba5375938f60b1ff83b6bd2",[m
+[32m+[m[32m                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/62116a9c8fb15faabb158ad9cb785c353c2572e5",[m
+[32m+[m[32m                "reference": "62116a9c8fb15faabb158ad9cb785c353c2572e5",[m
+                 "shasum": ""[m
+             },[m
+             "require": {[m
+[36m@@ -2144,11 +2213,11 @@[m
+             ],[m
+             "description": "Symfony HttpKernel Component",[m
+             "homepage": "https://symfony.com",[m
+[31m-            "time": "2020-01-21T13:23:17+00:00"[m
+[32m+[m[32m            "time": "2020-01-31T12:45:06+00:00"[m
+         },[m
+         {[m
+             "name": "symfony/mime",[m
+[31m-            "version": "v5.0.3",[m
+[32m+[m[32m            "version": "v5.0.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/mime.git",[m
+[36m@@ -2561,7 +2630,7 @@[m
+         },[m
+         {[m
+             "name": "symfony/process",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://github.com/symfony/process.git",[m
+[36m@@ -2610,7 +2679,7 @@[m
+         },[m
+         {[m
+             "name": "symfony/routing",[m
+[31m-            "version": "v4.4.3",[m
+[32m+[m[32m            "version": "v4.4.4",[m
+             "source": {[m
+                 "type": "git",[m
+                 "url": "https://gi
