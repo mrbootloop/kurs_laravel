@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            {!!Form::textarea('title',null,['class'=>'form-control']) !!}
+                            {!!Form::textarea('description',null,['class'=>'form-control']) !!}
                         </div>
                     </div>
             		<div class="form-group">
@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            {!!Form::text('title',null,['class'=>'form-control']) !!}
+                            {!!Form::text('url',null,['class'=>'form-control']) !!}
                         </div>
                     </div>
             		<div class="form-group">
