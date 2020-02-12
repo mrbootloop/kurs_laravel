@@ -6,7 +6,7 @@
             <div class="panel-body">
             <!-- Formularz -->
             	{!!Form::open(['url'=>'videos','class'=>'form-horizontal'])!!}
-            		
+            		{{ var_dump($errors) }}
             		<div class="form-group">
                         <div for="" class="col-md-4 control-label">
                         	{!!Form::label('title','Tytuł:')!!}
