@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Foundation\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Video;
+use App\Http\Requests\CreateVideoRequest;
 
 class VideosController extends Controller
 {
     /**
-    *Pobieramy liste filmow
+    *Download video list
     */
     public function index()
     {
@@ -18,7 +19,7 @@ class VideosController extends Controller
     }
 
     /**
-    *Jeden film
+    *One video
     */
     public function show($id)
     {
@@ -27,7 +28,7 @@ class VideosController extends Controller
     }
 
     /**
-    *Formularz dodawania filmu
+    *Add video form
     */
     public function create()
     {
@@ -36,13 +37,12 @@ class VideosController extends Controller
 
     
     /**
-    *Zapisanie filmu do bazy
+    *Saving video in database
     */
 
-    public function store()
+    public function store(CreateVideoRequest $request)
     {
-        $input = Request::all();
-        Video::create($input);
+        Video::create($request->all());
         return redirect('videos');
     }
 }
